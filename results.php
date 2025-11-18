@@ -1,11 +1,6 @@
 <?php
 // Connexion à la base de données
-$connexion = new mysqli("localhost", "root", "", "bibliotheque_db");
-
-// Vérifie la connexion
-if ($connexion->connect_error) {
-    die("Erreur de connexion : " . $connexion->connect_error);
-}
+require_once 'connexion_db.php';
 
 // On récupère la donnée saisi
 $termeRecherche = isset($_GET['search']) ? trim($_GET['search']) : "";

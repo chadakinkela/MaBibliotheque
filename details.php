@@ -18,10 +18,7 @@ if ($idLivre <= 0) {
 }
 
 // Connexion DB
-$connexion = new mysqli("localhost", "root", "", "bibliotheque_db");
-if ($connexion->connect_error) {
-    die("Erreur de connexion : " . $connexion->connect_error);
-}
+require_once 'connexion_db.php';
 
 // Vérifier si déjà emprunté
 $check = $connexion->prepare("

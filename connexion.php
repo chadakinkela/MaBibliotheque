@@ -2,18 +2,7 @@
 session_start();
 
 // Connexion à la base de données 
-$dbHost = "localhost";       
-$dbUser = "root";             
-$dbPass = "";                
-$dbName = "bibliotheque_db"; 
-
-$connexion = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
-
-if ($connexion->connect_error) {
-    die("Erreur de connexion : " . $connexion->connect_error);
-}
-
-$connexion->set_charset("utf8mb4");
+require_once 'connexion_db.php';
 
 $emailValue = '';
 $displayNewUserFields = false;

@@ -7,12 +7,7 @@ include('includes/header.php');
 
 // Connexion à la base de données + Vérification de connexion, si elle échoue,  le script s'arrête affiche l'erreur.
 
-$connexion = new mysqli("localhost", "root", "", "bibliotheque_db");
-if ($connexion->connect_error) {
-    die("Erreur de connexion à la base de données : " . $connexion->connect_error);
-}
-// Juste pour faire le beau
-$connexion->set_charset("utf8mb4");
+require_once 'connexion_db.php';
 
 // Avant d'accéder à cette page, l'utilisateur doit etre connecter,
 // sinon, il est redirigé vers la page connexion 

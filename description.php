@@ -1,10 +1,6 @@
 <?php
 // Connexion Db
-$connexion = new mysqli("localhost", "root", "", "bibliotheque_db");
-
-if ($connexion->connect_error) {
-    die("Erreur de connexion : " . $connexion->connect_error);
-}
+require_once 'connexion_db.php';
 
 // Vérifie si un id de livre est envoyé
 

@@ -1,11 +1,6 @@
 <?php
 session_start();
-$connexion = new mysqli("localhost", "root", "", "bibliotheque_db");
-
-// Vérifie la connexion
-if ($connexion->connect_error) {
-    die("Erreur de connexion :" . $connexion->connect_error);
-}
+require_once 'connexion_db.php';
 
 // Sécuriser l'id reçu
 $idLivre = isset($_GET['id']) ? intval($_GET['id']) : 0;

@@ -5,11 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Connexion à la base de données
-$conn = new mysqli("localhost", "root", "", "bibliotheque_db");
-if ($conn->connect_error) {
-    die("Erreur de connexion à la base de données : " . $conn->connect_error);
-}
-$conn->set_charset("utf8");
+require_once 'connexion_db.php';
 
 // Pagination
 $limitParPage = 12;
