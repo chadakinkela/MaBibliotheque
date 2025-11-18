@@ -1,0 +1,1478 @@
+/* La partie :root contient les propriétés du design principal de mon site;
+La déclaration des variables représentant mes palettes de couleurs.	
+*/
+:root {
+    --colorBackgroundSoftBeige: #F5EFE6; /* Couleur du background */
+    --colorTextDeepBlue: #1A2A42;       /* Couleur pour tout le texte principal, logo, titres */
+    --colorAccentElectricBlue: #4A90E2; /* Couleur pour tout les Liens, boutons, éléments interactifs */
+    --colorTextDarkTaupe: #6D6A6B;      /* Couleur pour tout les textes secondaires, descriptions */
+    --colorAccentBurntGold: #E1B382;    /* Couleur pour les icônes d'attention */
+    --colorWhite: #FFFFFF;
+    --headerHeight: 80px; 
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--colorTextDeepBlue);
+    background-color: var(--colorBackgroundSoftBeige);/* Ici j'appelle ma variable déclaré dans :root pour mon background couleur*/
+    scroll-behavior: smooth;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex-grow: 1;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Typographie de base pour les pages */
+h1, h2, h3 {
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: var(--colorTextDeepBlue);
+}
+h1 {
+    font-size: 48px;
+    text-align: center;
+    line-height: 1.1;
+}
+h2 {
+    font-size: 32px;
+    margin-top: 40px;
+    margin-bottom: 24px;
+    color: var(--colorTextDeepBlue);
+    text-align: center;
+}
+h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+p {
+    margin-bottom: 16px;
+    color: var(--colorTextDarkTaupe);
+}
+a {
+    color: var(--colorAccentElectricBlue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: var(--colorTextDeepBlue);
+    text-decoration: underline;
+}
+.bouton {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+.primaireBouton {
+    background-color: var(--colorAccentElectricBlue);
+    color: var(--colorWhite);
+    border: 1px solid var(--colorAccentElectricBlue);
+}
+.primaireBouton:hover {
+    background-color: var(--colorTextDeepBlue);
+    border-color: var(--colorTextDeepBlue);
+	color: var(--colorWhite);
+	text-decoration:none;
+}
+.secondaireBouton {
+    background-color: var(--colorWhite);
+    color: var(--colorTextDeepBlue);
+    border: 1px solid var(--colorTextDeepBlue);
+}
+.secondaireBouton:hover {
+    background-color: var(--colorTextDeepBlue);
+    color: var(--colorTextDeepBlue);
+	text-decoration:none;
+}
+.header {
+    background-color: var(--colorTextDeepBlue);
+    padding: 15px 0;
+    height: var(--headerHeight);
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.header .logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--colorWhite);
+}
+.header .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+.header .logo .siteName {
+    margin-right: 5px;
+}
+
+.header .logo .tagline {
+    font-size: 11px;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.8);
+    align-self: flex-end;
+    margin-bottom: 2px;
+}
+.nav ul {
+    list-style: none;
+    display: flex;
+}
+.nav ul li {
+    margin-left: 30px;
+}
+.nav ul li a {
+    color: var(--colorWhite);
+    font-weight: normal;
+    font-size: 16px;
+    padding-bottom: 5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+.nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--colorAccentElectricBlue);
+    transition: width 0.3s ease;
+}
+
+.nav ul li a:hover::after,
+.nav ul li a.active::after {
+    width: 100%;
+}
+.nav ul li a.active {
+    color: var(--colorAccentElectricBlue);
+    font-weight: bold;
+}
+.nav ul li a:hover {
+    color: var(--colorAccentElectricBlue);
+    text-decoration: none;
+}
+.sectionAcceuil {
+    padding: 120px 0;
+    background-color: var(--colorBackgroundSoftBeige);
+    text-align: center;
+}
+.sectionAcceuil h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: var(--colorTextDeepBlue);
+    line-height: 1.1;
+}
+.sectionAcceuil p {
+    font-size: 24px;
+    margin-bottom: 48px;
+    color: var(--colorTextDarkTaupe);
+}
+
+/* Design du formulaire de recherche */
+.rechercheForm {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.rechercheInputGroup {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 700px;
+    border: 2px solid var(--colorAccentElectricBlue);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--colorWhite);
+    margin-bottom: 20px;
+}
+
+/* Icône de recherche se trouvant dans la barre de recherche*/
+.rechercheInputGroup .rechercheIcon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    pointer-events: none;
+    background: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Image de l’icône */
+.rechercheIcon img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Input */
+.rechercheInputGroup input[type="search"] {
+    flex-grow: 1;
+    border: none;
+    padding: 14px 50px 14px 18px; 
+    font-size: 20px;
+    color: var(--colorTextDeepBlue);
+    background-color: var(--colorWhite);
+}
+
+.rechercheInputGroup input[type="search"]::placeholder {
+    color: var(--colorTextDarkTaupe);
+    opacity: 0.7;
+}
+.rechercheInputGroup input[type="search"]:focus {
+    outline: none;
+    box-shadow: none;
+}
+.rechercheInputGroup :hover {
+    background-color: #3A7ECB;
+}
+.parcoursCollections {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    color: var(--colorTextDarkTaupe);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+.parcoursCollections:hover {
+    color: var(--colorAccentElectricBlue);
+    text-decoration: none;
+}
+
+/* Design de la section Comment ça Marche !? */
+.commentCaMarcheSection {
+    background-color: var(--colorWhite);
+    padding: 80px 0;
+}
+
+.commentCaMarcheSection h2 {
+    margin-bottom: 40px;
+}
+
+.etapesGrille { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.etapeCarte { 
+    background-color: var(--colorBackgroundSoftBeige);
+    border-radius:10px;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.etapeCarte:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 5px rgba(0, 0, 0, 0.15);
+}
+
+.etapeIcone { 
+    width: 90px;
+    height: 90px;
+    background-color: var(--colorAccentElectricBlue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	
+}
+
+.etapeIcone img {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.etapeCarte h3 {
+    font-size: 22px;
+    color: var(--colorTextDeepBlue);
+    margin-bottom: 15px;
+}
+
+.etapeCarte p {
+    font-size: 16px;
+    color: var(--colorTextDarkTaupe);
+    margin-bottom: 0;
+}
+
+
+/* Design de la section footer */
+.footer {
+    background-color: var(--colorTextDeepBlue);
+    color: var(--colorWhite);
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer p {
+    font-size: 14px;
+    color: var(--colorWhite);
+    margin: 0;
+}
+
+.footerNav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.footerNav li {
+    margin: 0 15px;
+}
+
+.footerNav a {
+    color: var(--colorWhite);
+    font-size: 15px;
+    transition: color 0.2s ease;
+}
+
+.footerNav a:hover {
+    color: var(--colorAccentElectricBlue);
+}
+
+.socialLinks {
+    margin-top: 15px;
+}
+
+.socialIcon {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.socialIcon img {
+    height: 24px;
+    width: 24px;
+    filter: invert(1);
+    transition: transform 0.2s ease;
+}
+
+.socialIcon img:hover {
+    transform: translateY(-3px);
+}
+
+
+/* Cette partie gère la réactivité de la page index.php selon les différentes tailles d'écrans */
+
+/* Ecran inférieur ou égal à 768px */
+@media (max-width: 768px) {
+	
+.header .container {
+    flex-direction: column; 
+    align-items: center;
+    gap: 0;
+}
+.nav {
+    margin-top: 15px;
+    width: 100%;
+}
+.nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.nav ul li {
+    margin: 0 10px 10px 10px;
+}
+.header .logo {
+    margin-bottom: 0;
+}
+.header .logo .siteName {
+    font-size: 20px;
+}
+.header .logo .tagline {
+    font-size: 10px;
+}
+    
+/* Section Accueil */
+	
+.sectionAcceuil {
+    padding: 80px 0;
+}
+.sectionAcceuil h1 {
+    font-size: 32px;
+}
+.sectionAcceuil p {
+    font-size: 16px;
+}
+    
+/* Formulaire de recherche */
+	
+.rechercheForm {
+    max-width: 90%;
+}
+.rechercheInputGroup input[type="search"] {
+    font-size: 16px;
+    padding: 12px 15px;
+}
+.rechercheInputGroup .bouton {
+    font-size: 16px;
+    padding: 12px 25px;
+}
+.rechercheInputGroup .rechercheIcon {
+    font-size: 20px;
+    padding: 12px 15px;
+}
+.parcoursCollections {
+    font-size: 16px;
+}
+    
+/* Section Comment ça Marche */
+
+.commentCaMarcheSection {
+    padding: 60px 0;
+}
+.etapesGrille {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+.etapeCarte {
+    padding: 20px;
+}
+.etapeIcone {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+.etapeIcone img {
+    width: 35px; 
+    height: 35px; 
+}
+.etapeCarte h3 {
+    font-size: 20px;
+}
+.etapeCarte p {
+    font-size: 15px;
+}
+
+/* Footer */
+
+.footer {
+    padding: 20px 0;
+    margin-top: 30px;
+}
+.footer .container {
+    gap: 15px;
+}
+.footerNav ul {
+    flex-direction: column;
+    gap: 5px; 
+}
+.footerNav li {
+    margin: 5px 0; 
+}
+.footerNav a {
+    font-size: 14px;
+}
+.socialLinks {
+    margin-top: 10px;
+}
+}
+
+/* Écrans très petits, inférieur ou égal à 480px */
+
+@media (max-width: 480px) {
+h2 {
+    font-size: 28px;
+}
+
+/* Formulaire de recherche : le bouton passe sous le champ */
+.rechercheInputGroup {
+    flex-direction: column;
+    border: none; /* Supprime le contour pour la version empilée */
+    border-radius: 0;
+    background-color: transparent;
+    padding: 0;
+}
+.rechercheInputGroup input[type="search"] {
+    border: 2px solid var(--colorAccentElectricBlue);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 15px;
+}   
+.rechercheInputGroup .rechercheIcon {
+    display: none; /* Cache l'icône de loupe quand la recherche est empilée */
+}
+.rechercheInputGroup .bouton {
+    border-radius: 8px; /* Applique l'arrondi complet au bouton */
+    width: 100%;
+    padding: 15px 25px;
+}
+
+/* Footer */
+.footerNav ul {
+    align-items: center;
+}
+}
+/*------------------------------------C'est ici que prend fin les designs de la page index.php !---------------------------------------- */
+
+/* Design page connexion.php */
+
+body.connexion-page {
+    display: flex;
+    flex-direction: column; /* Garde la direction colonne pour header/footer */
+    min-height: 100vh;
+}
+
+body.connexion-page main {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 40px 20px; 
+}
+
+.connexion-box {
+    background-color: var(--colorWhite);
+    padding: 40px; 
+    border-radius: 10px; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    max-width: 450px; 
+    box-sizing: border-box;
+    text-align: center; 
+    margin: auto; 
+}
+
+.connexion-box h2 {
+    
+    margin-bottom: 25px; 
+}
+
+.connexion-box p.description {
+    font-size: 16px;
+    color: var(--colorTextDarkTaupe);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px; 
+    text-align: left; 
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--colorTextDeepBlue); 
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.form-group input[type="email"],
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 12px 15px; 
+    border: 1px solid #ddd;
+    border-radius: 5px; 
+    box-sizing: border-box;
+    font-size: 16px;
+    color: var(--colorTextDeepBlue);
+    background-color: var(--colorBackgroundSoftBeige); 
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="text"]:focus {
+    border-color: var(--colorAccentElectricBlue);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2); 
+}
+
+.connexion-box .bouton {
+    width: 100%;
+    margin-top: 15px; 
+    font-size: 18px; 
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: left; 
+}
+
+.alert.error {
+    background-color: #fce4e4; 
+    color: #cc0000; 
+    border: 1px solid #ffcccc;
+}
+
+.alert.success {
+    background-color: #e6ffe6; 
+    color: #008000;
+    border: 1px solid #ccffcc;
+}
+
+.alert.info {
+    background-color: #e0f2f7; 
+    color: #0288d1; 
+    border: 1px solid #b3e5fc;
+}
+
+#new_user_fields {
+    display: none;
+}
+
+/* Media queries pour la réactivité */
+@media (max-width: 768px) {
+    body.connexion-page main {
+        padding: 20px; 
+    }
+    .connexion-box {
+        padding: 25px;
+        max-width: 90%;
+    }
+    .connexion-box h2 {
+        font-size: 28px;
+    }
+    .connexion-box p.description {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+    .form-group input {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+    .connexion-box .bouton {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+    .alert {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+}
+
+/*-------------------------------------------------------Fin design de la page connexion.php-------------------------------------------------- */
+/* -----------Design page PopUp de results.php--------------- */
+#resultPopup {
+    position: absolute;
+    bottom: 100%; 
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 10px;
+    max-height: 380px;
+    overflow-y: auto;
+    z-index: 9999;
+    display: none;
+    margin-bottom: 8px;
+}
+.resultatsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+	margin: 30px auto;
+    max-width: 900px;
+}
+.livreItem {
+    display: flex;
+    background: #fff;
+    border: 1px solid var(--colorAccentElectricBlue);
+    border-radius: 10px;
+    padding: 15px;
+    gap: 15px;
+}
+.imageZone .imageZone img {
+    width: 110px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.texteZone h3 {
+    margin:0;
+    font-size: 20px;
+    color: var(--colorTextDeepBlue);
+}
+.texteZone .auteur {
+    font-size: 16px;
+    color: var(--colorTextDarkTaupe);
+}
+.texteZone .categorie {
+    margin-top: 5px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+.actions .btnDescription {
+    padding: 10px 20px;
+    background: var(--colorAccentElectricBlue);
+    color: white;
+    border-radius: 6px;
+    display: inline-block;
+    text-decoration: none;
+}
+.btnDescription:hover {
+    background: #3A7ECB;
+}
+
+.noResult {
+    padding: 10px;
+    text-align: center;
+    color: #555;
+}
+
+/* POur un desdign responsive */
+
+@media (max-width: 600px) {
+    .livreItem {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .imageZone img {
+        width: 140px;
+        height: 190px;
+    }
+}
+/* ------------------------- Fin design de la page PopUp results.php------------------ --- */
+
+/* ----------- Styles de la page UserAccount.php -------------- */
+
+.dashboardLayout {
+    display: grid;
+    grid-template-columns: 300px 1fr; 
+    gap: 30px;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    align-items: start;
+}
+
+.sidenav {
+    background: var(--colorWhite);
+    border: 1px solid rgba(26, 42, 66, 0.06);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 6px 18px rgba(26,42,66,0.04);
+    height: fit-content;
+}
+
+.mainContent {
+    background: var(--colorWhite);
+    border: 1px solid rgba(26,42,66,0.06);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 6px 18px rgba(26,42,66,0.04);
+}
+
+.userProfile {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.userAvatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--colorAccentElectricBlue), var(--colorAccentBurntGold));
+    color: var(--colorWhite);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(26,42,66,0.08);
+}
+
+.userName {
+    font-weight: 700;
+    color: var(--colorTextDeepBlue);
+    margin: 4px 0;
+    font-size: 16px;
+}
+
+.userEmail {
+    font-size: 13px;
+    color: var(--colorTextDarkTaupe);
+}
+
+.sidenavNav {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidenavItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--colorTextDeepBlue);
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.18s ease, color 0.18s ease, transform 0.12s ease;
+    border: 1px solid transparent;
+}
+
+.sidenavItem:hover {
+    background-color: rgba(74,144,226,0.06);
+    transform: translateY(-1px);
+}
+
+.sidenavItem.active {
+    background-color: var(--colorAccentElectricBlue);
+    color: var(--colorWhite);
+    font-weight: 600;
+    border-color: rgba(26,42,66,0.06);
+}
+
+.sidenavItem.logout {
+    margin-top: 8px;
+    color: #D32F2F;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.mainContent > h1 {
+    margin: 0 0 12px 0;
+    font-size: 24px;
+    color: var(--colorTextDeepBlue);
+}
+.description {
+    margin: 0 0 20px 0;
+    color: var(--colorTextDarkTaupe);
+    font-size: 15px;
+}
+.dashboardStats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 22px;
+}
+.statCard {
+    background: linear-gradient(180deg, #ffffff, #fbfbfb);
+    border: 1px solid rgba(26,42,66,0.06);
+    padding: 18px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(26,42,66,0.03);
+}
+.statValue {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--colorAccentElectricBlue);
+    margin-bottom: 6px;
+}
+
+.statLabel {
+    font-size: 13px;
+    color: var(--colorTextDarkTaupe);
+}
+.addToListeForm h3 {
+    margin-top: 0;
+    color: var(--colorTextDeepBlue);
+}
+.bookForm {
+    display: grid;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: var(--colorTextDeepBlue);
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="email"],
+.form-group select {
+    padding: 10px 12px;
+    border: 1px solid var(--colorBorderLight, #dcdcdc);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--colorTextDeepBlue);
+    background: #fff;
+}
+.bookForm .bouton {
+    padding: 10px 16px;
+    border-radius: 8px;
+}
+.myBooksList h3 {
+    margin-top: 0;
+    color: var(--colorTextDeepBlue);
+}
+.booksGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 12px;
+}
+.bookCard {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(26,42,66,0.06);
+    background: linear-gradient(180deg, #ffffff, #fbfbfb);
+    align-items: flex-start;
+    box-shadow: 0 6px 18px rgba(26,42,66,0.03);
+}
+.bookCover {
+    width: 90px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #e6e6e6;
+    flex-shrink: 0;
+}
+.bookInfo h4 {
+    margin: 0 0 4px 0;
+    color: var(--colorTextDeepBlue);
+    font-size: 16px;
+}
+.bookAuthor {
+    margin: 4px 0;
+    color: var(--colorTextDarkTaupe);
+    font-size: 14px;
+}
+.bookDetails {
+    margin: 2px 0;
+    font-size: 13px;
+    color: #666;
+}
+.statusEnCours { color: #388E3C; font-weight:600; } 
+.statusRendu { color: #888; font-weight:600; }
+.statusPrevu { color: #4A90E2; font-weight:600; } 
+.statusRetard { color: #D84315; font-weight:700; } 
+
+.bookActions {
+    margin-left: auto; 
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.bookActions .bouton {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.dangerBouton {
+    background: #F44336;
+    color: white;
+    border: 1px solid #F44336;
+}
+
+.dashboardSection.quickActions {
+    margin-top: 10px;
+    padding: 12px 0 0 0;
+}
+
+.actionsGrid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 10050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(10,10,10,0.45); 
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.modal-content {
+    background: var(--colorWhite);
+    border-radius: 10px;
+    max-width: 720px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 12px 40px rgba(26,42,66,0.12);
+    position: relative;
+}
+.close-button {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    color: var(--colorTextDeepBlue);
+    cursor: pointer;
+    padding: 6px;
+}
+.modal-open {
+    overflow: hidden;
+}
+.alert {
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.alert.success {
+    background: #E6F7EA;
+    color: #186A2B;
+    border: 1px solid rgba(56,142,60,0.12);
+}
+
+.alert.error {
+    background: #FCECEB;
+    color: #C62828;
+    border: 1px solid rgba(244,67,54,0.12);
+}
+
+.alert.info {
+    background: #EAF4FF;
+    color: #0B66C3;
+    border: 1px solid rgba(10,103,204,0.08);
+}
+
+@media (max-width: 1000px) {
+    .dashboardLayout {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 0 16px;
+    }
+
+    .booksGrid {
+        grid-template-columns: 1fr; 
+    }
+
+    .dashboardStats {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    .bookActions {
+        flex-direction: row;
+        gap: 8px;
+        margin-left: 0;
+        justify-content: flex-end;
+    }
+
+    .sidenav {
+        order: 2;
+    }
+
+    .mainContent {
+        order: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .userAvatar {
+        width: 56px;
+        height: 56px;
+        font-size: 18px;
+    }
+
+    .dashboardStats {
+        grid-template-columns: 1fr;
+    }
+
+    .bookCover {
+        width: 70px;
+        height: 100px;
+    }
+
+    .modal-content {
+        padding: 16px;
+    }
+
+    .sidenav {
+        padding: 14px;
+    }
+}
+
+.sidenavItem,
+.bouton,
+.bookCard,
+.form-group input,
+.form-group select {
+    transition: all 0.16s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    box-shadow: 0 6px 18px rgba(74,144,226,0.12);
+    border-color: var(--colorAccentElectricBlue);
+}
+
+
+/* Structure Générale du Catalogue */
+.mainContent {
+    
+    padding: 20px 0;
+    background-color: var(--colorBackgroundSoftBeige);
+}
+
+.catalogueIntroduction {
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.catalogueIntroduction h1 {
+    font-size: 2.5em;
+    color: #343a40; 
+    border-bottom: 2px solid #007bff; 
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+}
+
+.catalogueContenu {
+    padding: 20px 0;
+}
+
+.catalogueContenu > .container {
+    
+    display: flex;
+    gap: 30px; 
+}
+
+.filtresAside {
+    width: 250px; 
+    flex-shrink: 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
+    align-self: flex-start; 
+}
+
+.filtreGroup {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dee2e6; 
+}
+
+.filtreGroup:last-child {
+    border-bottom: none; 
+}
+
+.filtresAside h3 {
+    font-size: 1.1em;
+    color: #007bff; 
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.filtresAside ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filtresAside li {
+    margin-bottom: 8px;
+}
+
+.filtresAside a {
+    text-decoration: none;
+    color: #495057;
+    transition: color 0.2s;
+}
+
+.filtresAside a:hover {
+    color: #0056b3; 
+}
+
+.filtresAside label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    color: #495057;
+    cursor: pointer;
+}
+
+.filtresAside input[type="radio"],
+.filtresAside input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: #007bff; 
+}
+
+.appliquerFiltresBouton {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.affichageCataloguePrincipal {
+    flex-grow: 1; 
+}
+
+.optionsTri {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Aligne à droite */
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.optionsTri span {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #495057;
+}
+
+.optionsTri select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+}
+
+.livresGrille {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 25px;
+}
+
+.livreCarte {
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+
+.livreCarte:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.couvertureLivre {
+    width: 100%;
+    max-height: 250px; 
+    object-fit: cover; 
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.livreCarte h3 {
+    font-size: 1.1em;
+    color: #343a40;
+    margin: 10px 0 5px;
+    line-height: 1.3;
+}
+
+.auteur {
+    color: #6c757d;
+    font-style: italic;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.actionsLivre {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.indisponibleEtiquette {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #dc3545; 
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.desactive {
+    opacity: 0.6;
+    pointer-events: none; 
+}
+
+.bouton {
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    display: inline-block;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+.petitBouton {
+    padding: 6px 12px;
+    font-size: 0.85em;
+}
+
+.primaireBouton { 
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+.primaireBouton:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.secondaireBouton { 
+    background-color: #6c757d;
+    color: white;
+    border: 1px solid #6c757d;
+}
+
+.secondaireBouton:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.pagination {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.pagination ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.pagination li {
+    display: inline;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #007bff;
+    padding: 8px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.pagination a:hover:not(.pageActive):not(.desactive) {
+    background-color: #e9ecef;
+    color: #0056b3;
+}
+
+.pagination .pageActive {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    font-weight: bold;
+}
+
+.pagination .desactive {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #f1f1f1;
+    border-color: #e9ecef;
+    cursor: default;
+}
+
+
+@media (max-width: 992px) {
+    
+    .catalogueContenu > .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .filtresAside {
+        width: 100%; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+    }
+
+    .livresGrille {
+        
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    }
+}
+
+@media (max-width: 576px) {
+    .catalogueIntroduction h1 {
+        font-size: 2em;
+    }
+
+    .livreCarte {
+        padding: 10px;
+    }
+
+    .livresGrille {
+        
+        grid-template-columns: 1fr; 
+    }
+
+    .optionsTri {
+        justify-content: space-between;
+    }
+}
