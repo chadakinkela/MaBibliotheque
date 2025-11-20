@@ -1,7 +1,5 @@
 {
-    "name": "MaBibliotheque/mabibliotheque",
-    "require": {
-        "php": "8.1.*",
-        "ext-mysqli": "*"
-    }
+  "require": {
+    "ext-mysqli": "*"
+  }
 }
