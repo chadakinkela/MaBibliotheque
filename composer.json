@@ -1,0 +1,7 @@
+{
+    "name": "MaBibliotheque/mabibliotheque",
+    "require": {
+        "php": ">=7.0",
+        "ext-mysqli": "*"
+    }
+}
