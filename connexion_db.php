@@ -1,23 +1,22 @@
 <?php
-// Récupération des variables d'environnement injectées par Railway
-$host = getenv('MYSQL_HOST');
-$port = getenv('MYSQL_PORT');
-$user = getenv('MYSQL_USER');
-$pass = getenv('MYSQL_PASSWORD');
-$db   = getenv('MYSQL_DATABASE');
 
-
-// Tentative de connexion à la base de données Railway
-
-$connexion = new mysqli($host, $user, $pass, $db, $port);
-
-// Gestion des erreurs de connexion 
-if ($connexion->connect_error) {
-    // 🛑 AFFICHER LES PARAMÈTRES POUR LE DÉBOGAGE 🛑
-    die("CONNEXION ÉCHOUÉE. Identifiants: HOST='{$host}', PORT='{$port}', USER='{$user}'. Erreur: " . $connexion->connect_error); 
+if (!class_exists('mysqli')) {
+    die("ERREUR FATALE: L'extension PHP 'mysqli' est manquante ou non activée sur le serveur Railway.");
 }
 
-// Définir l'encodage des caractères 
-$connexion->set_charset("utf8");
+// Nous testons seulement la variable HOST, si elle fonctionne, les autres aussi.
+$host = getenv('MYSQL_HOST'); 
 
+if (empty($host)) {
+    die("ERREUR FATALE: Les variables d'environnement ne sont pas lues sur cette page. (Host est vide)");
+}
+
+// Si les deux tests passent, le script devrait continuer.
+die("Tests de base réussis. HOST est: " . $host . ". L'extension mysqli est présente.");
+
+// $port = getenv('MYSQL_PORT'); 
+// $user = getenv('MYSQL_USER');
+// $pass = getenv('MYSQL_PASSWORD');
+// $db   = getenv('MYSQL_DATABASE');
+// $connexion = new mysqli($host, $user, $pass, $db, $port);
 ?>
