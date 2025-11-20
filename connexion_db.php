@@ -1,22 +1,27 @@
 <?php
+// --- Déclaration statique pour le débogage ---
+$host = 'mysql.railway.internal';      
+$port = 3306;                  
+$user = 'root';      
+$pass = 'qsOmRwSjuCFYEKKdLPelVIggSoveVIbE';  
+$db   = 'railway';            
 
 if (!class_exists('mysqli')) {
-    die("ERREUR FATALE: L'extension PHP 'mysqli' est manquante ou non activée sur le serveur Railway.");
+    die("ERREUR FATALE: L'extension PHP 'mysqli' est manquante ou non activée.");
 }
 
-// Nous testons seulement la variable HOST, si elle fonctionne, les autres aussi.
-$host = getenv('MYSQL_HOST'); 
-
-if (empty($host)) {
-    die("ERREUR FATALE: Les variables d'environnement ne sont pas lues sur cette page. (Host est vide)");
+if (empty($host) || empty($user) || empty($pass) || empty($db)) {
+    die("ERREUR FATALE: Le code contient des variables vides.");
 }
 
-// Si les deux tests passent, le script devrait continuer.
-die("Tests de base réussis. HOST est: " . $host . ". L'extension mysqli est présente.");
+$connexion = @new mysqli($host, $user, $pass, $db, $port);
 
-// $port = getenv('MYSQL_PORT'); 
-// $user = getenv('MYSQL_USER');
-// $pass = getenv('MYSQL_PASSWORD');
-// $db   = getenv('MYSQL_DATABASE');
-// $connexion = new mysqli($host, $user, $pass, $db, $port);
+if ($connexion->connect_error) {
+    die("CONNEXION ÉCHOUÉE: " . $connexion->connect_error);
+}
+
+die("CONNEXION RÉUSSIE ! Le site est prêt à afficher les données.");
+
+$connexion->set_charset("utf8");
+
 ?>
