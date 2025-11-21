@@ -1,27 +1,20 @@
 <?php
-// --- Déclaration statique pour le débogage ---
-$host = 'mysql.railway.internal';      
-$port = 3306;                  
+// Récupération des variables d'environnement de Railway
+$host = 'mysql.railway.internal';                       
 $user = 'root';      
 $pass = 'qsOmRwSjuCFYEKKdLPelVIggSoveVIbE';  
-$db   = 'railway';            
+$db   = 'railway';  
+$port = 3306;    
 
-if (!class_exists('mysqli')) {
-    die("ERREUR FATALE: L'extension PHP 'mysqli' est manquante ou non activée.");
-}
+// Tentative de connexion à la base de données      
+$connexion = @new mysqli($host, $user, $pass, $db, $port); 
 
-if (empty($host) || empty($user) || empty($pass) || empty($db)) {
-    die("ERREUR FATALE: Le code contient des variables vides.");
-}
-
-$connexion = @new mysqli($host, $user, $pass, $db, $port);
-
+// Gestion des erreurs de connexion
 if ($connexion->connect_error) {
-    die("CONNEXION ÉCHOUÉE: " . $connexion->connect_error);
+    die("Erreur de connexion : " . $connexion->connect_error);
 }
 
-die("CONNEXION RÉUSSIE ! Le site est prêt à afficher les données.");
-
+// Définir le charset pour supporter les accents et caractères spéciaux
 $connexion->set_charset("utf8");
 
 ?>
