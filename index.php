@@ -3,9 +3,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-echo "<h1>ÉTAPE 1 : Index démarré.</h1>";
 include('includes/header.php');
-echo "<h1>ÉTAPE 2 : Header inclus.</h1>";
 ?>
 
 <main>
