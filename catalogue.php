@@ -29,7 +29,7 @@ switch ($triPar) {
 
 // Total livres pour pagination
 $countSql = "SELECT COUNT(id) AS totalLivres FROM livres" . $whereClause;
-$countResult = $conn->query($countSql);
+$countResult = $connexion->query($countSql);
 $totalLivres = $countResult ? $countResult->fetch_assoc()['totalLivres'] : 0;
 $totalPages = ceil($totalLivres / $limitParPage);
 $pageActuelle = max(1, min($pageActuelle, $totalPages));
@@ -37,14 +37,14 @@ $offset = ($pageActuelle - 1) * $limitParPage;
 
 // Récupération livres page actuelle
 $livresSql = "SELECT id, titre, auteur, nombre_exemplaire, image FROM livres $whereClause $orderBy LIMIT $limitParPage OFFSET $offset";
-$livresResult = $conn->query($livresSql);
+$livresResult = $connexion->query($livresSql);
 $livresAffiches = $livresResult ? $livresResult->fetch_all(MYSQLI_ASSOC) : [];
 
 // Récupérer la wishlist de l'utilisateur connecté
 $wishlistIds = [];
 if (isset($_SESSION['idLecteur'])) {
     $idLecteur = $_SESSION['idLecteur'];
-    $stmt = $conn->prepare("SELECT id_livre FROM liste_lecture WHERE id_lecteur = ?");
+    $stmt = $connexion->prepare("SELECT id_livre FROM liste_lecture WHERE id_lecteur = ?");
     if ($stmt) {
         $stmt->bind_param("i", $idLecteur);
         $stmt->execute();
@@ -191,6 +191,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <?php
-$conn->close();
+$connexion->close();
 include('includes/footer.php');
 ?>
