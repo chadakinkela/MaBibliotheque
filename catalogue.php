@@ -81,7 +81,7 @@ if (isset($_SESSION['idLecteur'])) {
 include('includes/header.php');
 ?>
 
-<main class="mainContent">
+<main class="main_Content">
     <section class="catalogueIntroduction">
         <div class="container">
             <h1>Notre Catalogue : <?php echo $totalLivres; ?> livres trouvés</h1>

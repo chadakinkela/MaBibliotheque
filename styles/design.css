@@ -811,7 +811,6 @@ body.connexion-page main {
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 6px 18px rgba(26,42,66,0.04);
-	flex-grow: 1;
 }
 
 .userProfile {
@@ -1165,8 +1164,8 @@ body.connexion-page main {
 
 
 /* Structure Générale du Catalogue */
-.mainContent {
-    
+.main_Content {
+    flex-grow: 1;
     padding: 20px 0;
     background-color: var(--colorBackgroundSoftBeige);
 }
