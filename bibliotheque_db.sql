@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 17 nov. 2025 à 03:36
+-- Généré le : lun. 24 nov. 2025 à 09:50
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -39,9 +39,9 @@ CREATE TABLE `lecteurs` (
 --
 
 INSERT INTO `lecteurs` (`id`, `nom`, `prenom`, `email`) VALUES
-(2, 'etiwa', 'Imaculee', 'tribunaletiwa@gmail.com'),
 (3, 'Kinkela', 'Jonathan', 'kinkelajonathan1@gmail.com'),
-(4, 'Kinkela', 'Chada', 'chadakinkela@gmail.com');
+(4, 'Kinkela', 'Chada', 'chadakinkela@gmail.com'),
+(5, 'Tribunal', 'Imaculée', 'tribunaletiwa@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -61,11 +61,21 @@ CREATE TABLE `liste_lecture` (
 --
 
 INSERT INTO `liste_lecture` (`id_livre`, `id_lecteur`, `date_emprunt`, `date_retour`) VALUES
-(5, 4, NULL, NULL),
+(5, 4, NULL, '2025-11-24'),
 (4, 4, NULL, NULL),
 (3, 4, NULL, NULL),
 (5, 3, NULL, NULL),
-(4, 3, NULL, NULL);
+(4, 3, NULL, NULL),
+(13, 4, NULL, NULL),
+(6, 4, NULL, NULL),
+(12, 4, NULL, '2025-11-24'),
+(11, 4, NULL, NULL),
+(14, 4, NULL, '2025-11-24'),
+(10, 4, NULL, '2025-11-24'),
+(8, 4, NULL, NULL),
+(9, 4, NULL, '2025-11-24'),
+(14, 5, NULL, NULL),
+(5, 5, '2025-11-24', NULL);
 
 -- --------------------------------------------------------
 
@@ -101,7 +111,7 @@ INSERT INTO `livres` (`id`, `titre`, `auteur`, `description`, `maison_edition`, 
 (10, 'Les émotions cachées des plantes', 'Didier Van Cauwelaert', 'Aussi incroyable que cela paraisse, les plantes sont capables d\'éprouver toute la gamme des émotions. Et comme on l\'a récemment démontré, elles savent aussi, par les moyens les plus extraordinaires comme les plus simples, transmettre ce qu\'elles ressentent. La nature ne cesse de nous parler, preuves à l\'appui. A nous d\'arrêter d\'être sourds.\r\nElles se défendent, elles attaquent, elles nouent des alliances, elles chassent, elles rusent, elles draguent, elles communiquent à distance leurs peurs, leurs souffrances et leur joie. C\'est aujourd\'hui prouvé : elles nous perçoivent, nous reconnaissent, nous calculent, elles réagissent à nos émotions comme elles expriment les leurs. Est-il possible qu\'elles nous envoient des informations thérapeutiques, des messages de gratitude, des appels au secours ?\r\nOui, les plantes sont dotées d\'intelligence, de sensibilité, voire d\'une forme de télépathie qu\'ont détectée nos instruments de mesure. Aussi merveilleuses soient-elles, toutes les révélations contenues dans ce livre sont le fruit d\'observations et d\'expériences scientifiques.\r\nLa nature ne cesse de nous parler. A nous d\'arrêter d\'être sourds.', 'J\'ai lu', 13, 'Les_émotions_cachées_des_plantes.png', 'Science botanique'),
 (11, 'Relations efficaces', 'Thomas Gordon', 'Lorsque vous entendez le mot relation, à quoi pensez-vous ? Pour la majorité d\'entre nous, ce mot évoque la relation étroite, intime, que nous entretenons avec un partenaire ou un conjoint. Nous pensons alors aux relations les plus importantes de notre vie.\r\nMais réfléchissez un peu à ceci : beaucoup de personnes autres que nos proches sont en mesure d\'exercer une influence considérable, tant positive que négative, sur notre existence.', 'Marabout', 12, 'Relations_efficaces.png', 'Psychologie'),
 (12, 'De quoi aimer vivre', 'Fatou Diome', 'Pour qui ne craint pas la noyade, la lune n\'est jamais loin. Elle se reflète dans toutes les eaux, flotte entre toutes les paupières. N\'est-ce pas son éclat qui fait briller les yeux des amants et leur donne le pouvoir ensorceleur ? \"\r\nA partir de simples instants de vie, Fatou Diome scrute les comportements et sonde les cœurs d\'une galerie de personnages rêvés ou croisés : qu\'ils aient le cœur en berne ou comblé, tous savent, au fond, que l\'amour est la grande affaire de nos vies.\r\nVingt ans après \"La Préférence nationale\", Fatou Diome renoue avec la nouvelle, genre dans lequel elle excelle, et nous démontre, avec brio et malice, que \"chercher le bonheur c\'est oser le vertige', 'Albin Michel', 9, 'De_quoi_aimer_vivre.png', 'Roman'),
-(13, 'Onze minutes', 'Paulo Coello', 'Toute jeune Brésilienne du Nordeste, Maria n’aspire qu’à l’Aventure, au grand Amour. Au cours d\'une semaine de vacances à Rio de Janeiro, sur la plage de Copacabana, un Suisse lui propose de devenir danseuse de cabaret à Genève. Elle voit là le début d’un conte de fées... Mais la réalité sera bien différente.\r\nMaria en vient à se prostituer - sans honte, puisqu’elle apprend à son âme à ne pas se plaindre de ce que fait son corps, et qu’elle s’interdit de tomber amoureuse. Après tout, la prostitution est un métier comme un autre, avec ses règles, ses horaires et ses jours de repos… Mais le sexe - comme l\'amour reste pour elle une énigme.\r\nPour découvrir le sens sacré de la sexualité, Maria devra trouver le chemin de la réconciliation avec elle-même.', 'Poche', 19, 'Onze_minutes.png', 'Roman'),
+(13, 'Onze minutes', 'Paulo Coelho', 'Toute jeune Brésilienne du Nordeste, Maria n’aspire qu’à l’Aventure, au grand Amour. Au cours d\'une semaine de vacances à Rio de Janeiro, sur la plage de Copacabana, un Suisse lui propose de devenir danseuse de cabaret à Genève. Elle voit là le début d’un conte de fées... Mais la réalité sera bien différente.\r\nMaria en vient à se prostituer - sans honte, puisqu’elle apprend à son âme à ne pas se plaindre de ce que fait son corps, et qu’elle s’interdit de tomber amoureuse. Après tout, la prostitution est un métier comme un autre, avec ses règles, ses horaires et ses jours de repos… Mais le sexe - comme l\'amour reste pour elle une énigme.\r\nPour découvrir le sens sacré de la sexualité, Maria devra trouver le chemin de la réconciliation avec elle-même.', 'Poche', 19, 'Onze_minutes.png', 'Roman'),
 (14, 'Une terre promise', 'Barack Obama', 'Dans le premier volume de ses mémoires présidentiels, Barack Obama raconte l\'histoire passionnante de son improbable odyssée, celle d\'un jeune homme en quête d\'identité devenu dirigeant du monde libre, retraçant de manière personnelle son éducation politique et les moments emblématiques du premier mandat de sa présidence - une période de transformations et de bouleversements profonds.\r\nBarack Obama nous invite à le suivre dans un incroyable voyage, de ses premiers pas sur la scène politique à sa victoire décisive aux primaires de l\'Iowa, et jusqu\'à la soirée historique du 4 novembre 2008, lorsqu\'il fut élu 44e président des États-Unis, devenant ainsi le premier Afro-Américain à accéder à la fonction suprême.', 'Poche', 7, 'Une_terre_promise.png', 'Memoire');
 
 --
@@ -135,7 +145,7 @@ ALTER TABLE `livres`
 -- AUTO_INCREMENT pour la table `lecteurs`
 --
 ALTER TABLE `lecteurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `livres`

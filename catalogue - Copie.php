@@ -7,20 +7,6 @@ if (session_status() === PHP_SESSION_NONE) {
 // Connexion à la base de données
 require_once 'connexion_db.php';
 
-// Récupération des catégories et auteurs
-$categoriesUniques = [];
-$catResult = $connexion->query("SELECT DISTINCT categorie FROM livres WHERE categorie IS NOT NULL AND categorie != '' ORDER BY categorie ASC");
-if ($catResult) {
-    $categoriesUniques = $catResult->fetch_all(MYSQLI_ASSOC);
-}
-
-$auteursUniques = [];
-$auteurResult = $connexion->query("SELECT DISTINCT auteur FROM livres WHERE auteur IS NOT NULL AND auteur != '' ORDER BY auteur ASC");
-if ($auteurResult) {
-    $auteursUniques = $auteurResult->fetch_all(MYSQLI_ASSOC);
-}
-
-
 // Pagination
 $limitParPage = 12;
 $pageActuelle = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
@@ -29,18 +15,9 @@ $offset = ($pageActuelle - 1) * $limitParPage;
 // Filtres et tri
 $triPar = $_GET['sort-by'] ?? 'recent';
 $disponibiliteFiltre = $_GET['availability'] ?? 'all';
-//Récupération des filtres Catégorie et Auteur
-$filtreCategorie = $_GET['categorie'] ?? ''; 
-$filtreAuteur = $_GET['auteur'] ?? '';
 
 $whereConditions = [];
 if ($disponibiliteFiltre === 'available') $whereConditions[] = "nombre_exemplaire > 0";
-if (!empty($filtreCategorie)) {
-    $whereConditions[] = "categorie = '" . $connexion->real_escape_string($filtreCategorie) . "'";
-}
-if (!empty($filtreAuteur)) {
-    $whereConditions[] = "auteur = '" . $connexion->real_escape_string($filtreAuteur) . "'";
-}
 $whereClause = !empty($whereConditions) ? " WHERE " . implode(" AND ", $whereConditions) : "";
 
 switch ($triPar) {
@@ -78,6 +55,7 @@ if (isset($_SESSION['idLecteur'])) {
         $stmt->close();
     }
 }
+
 include('includes/header.php');
 ?>
 
@@ -94,31 +72,10 @@ include('includes/header.php');
                 <aside class="filtresAside">
                     <div class="filtreGroup">
                         <h3>Filtres Rapides</h3>
-                        <div style="margin-bottom: 15px;">
-							<label for="filtre_categorie">Catégories :</label>
-							<select name="categorie" id="filtre_categorie">
-								<option value="" <?php if (empty($filtreCategorie)) echo 'selected'; ?>>Toutes</option>           
-									<?php foreach ($categoriesUniques as $cat): ?>
-								<option value="<?php echo htmlspecialchars($cat['categorie']); ?>"
-									<?php if ($filtreCategorie === $cat['categorie']) echo 'selected'; ?>>
-									<?php echo htmlspecialchars($cat['categorie']); ?>
-								</option>
-								<?php endforeach; ?>
-							</select>
-						</div>
-
-						<div>
-							<label for="filtre_auteur">Auteurs :</label>
-							<select name="auteur" id="filtre_auteur">
-								<option value="" <?php if (empty($filtreAuteur)) echo 'selected'; ?>>Tous</option>           
-									<?php foreach ($auteursUniques as $aut): ?>
-								<option value="<?php echo htmlspecialchars($aut['auteur']); ?>"
-									<?php if ($filtreAuteur === $aut['auteur']) echo 'selected'; ?>>
-									<?php echo htmlspecialchars($aut['auteur']); ?>
-								</option>
-								<?php endforeach; ?>
-							</select>
-						</div>
+                        <ul>
+                            <li><a href="#">Genres</a></li>
+                            <li><a href="#">Auteurs</a></li>
+                        </ul>
                     </div>
 
                     <div class="filtreGroup disponibiliteFiltre">
@@ -143,13 +100,13 @@ include('includes/header.php');
 
             <div class="affichageCataloguePrincipal">
                 <div class="optionsTri">
-					<span>Trier par :</span>
-					<select name="sort-by" onchange="window.location.href = 'catalogue.php?page=<?php echo $pageActuelle; ?>&sort-by=' + this.value + '&availability=<?php echo $disponibiliteFiltre; ?>&categorie=<?php echo urlencode($filtreCategorie); ?>&auteur=<?php echo urlencode($filtreAuteur); ?>'"> 
-						<option value="recent" <?php if ($triPar === 'recent') echo 'selected'; ?>>Plus récents</option>
-						<option value="title-asc" <?php if ($triPar === 'title-asc') echo 'selected'; ?>>Titre (A-Z)</option>
-						<option value="title-desc" <?php if ($triPar === 'title-desc') echo 'selected'; ?>>Titre (Z-A)</option>
-					</select>
-				</div>
+                    <span>Trier par :</span>
+                    <select name="sort-by" onchange="window.location.href = 'catalogue.php?page=<?php echo $pageActuelle; ?>&sort-by=' + this.value + '&availability=<?php echo $disponibiliteFiltre; ?>'"> 
+                        <option value="recent" <?php if ($triPar === 'recent') echo 'selected'; ?>>Plus récents</option>
+                        <option value="title-asc" <?php if ($triPar === 'title-asc') echo 'selected'; ?>>Titre (A-Z)</option>
+                        <option value="title-desc" <?php if ($triPar === 'title-desc') echo 'selected'; ?>>Titre (Z-A)</option>
+                    </select>
+                </div>
 
                 <div class="livresGrille">
                     <?php if (!empty($livresAffiches)): ?>
@@ -183,31 +140,22 @@ include('includes/header.php');
                 <?php if ($totalPages > 1): ?>
                     <div class="pagination">
                         <ul>
-							<?php 
-							$urlFiltres = "&categorie=" . urlencode($filtreCategorie) . 
-											"&auteur=" . urlencode($filtreAuteur) . 
-											"&sort-by=" . $triPar . 
-											"&availability=" . $disponibiliteFiltre; 
-							?>
-            
-							<li>
-								<?php $urlPrecedent = "catalogue.php?page=" . ($pageActuelle - 1) . $urlFiltres; ?>
-								<a href="<?php if ($pageActuelle > 1) echo $urlPrecedent; else echo '#'; ?>" class="<?php if ($pageActuelle <= 1) echo 'desactive'; ?>">&laquo; Précédent</a>
-							</li>
-            
-							<?php for ($i = 1; $i <= $totalPages; $i++):                
-								$urlPage = "catalogue.php?page=" . $i . $urlFiltres;
-							?>
-							<li>
-								<a href="<?php echo $urlPage; ?>" class="<?php if ($i === $pageActuelle) echo 'pageActive'; ?>"><?php echo $i; ?></a>
-							</li>
-							<?php endfor; ?>
-            
-							<li>
-								<?php $urlSuivant = "catalogue.php?page=" . ($pageActuelle + 1) . $urlFiltres; ?>
-								<a href="<?php if ($pageActuelle < $totalPages) echo $urlSuivant; else echo '#'; ?>" class="<?php if ($pageActuelle >= $totalPages) echo 'desactive'; ?>">Suivant &raquo;</a>
-							</li>
-						</ul>
+                            <li>
+                                <?php $urlPrecedent = "catalogue.php?page=" . ($pageActuelle - 1) . "&sort-by=" . $triPar . "&availability=" . $disponibiliteFiltre; ?>
+                                <a href="<?php if ($pageActuelle > 1) echo $urlPrecedent; else echo '#'; ?>" class="<?php if ($pageActuelle <= 1) echo 'desactive'; ?>">&laquo; Précédent</a>
+                            </li>
+                            <?php for ($i = 1; $i <= $totalPages; $i++): 
+                                $urlPage = "catalogue.php?page=" . $i . "&sort-by=" . $triPar . "&availability=" . $disponibiliteFiltre;
+                            ?>
+                                <li>
+                                    <a href="<?php echo $urlPage; ?>" class="<?php if ($i === $pageActuelle) echo 'pageActive'; ?>"><?php echo $i; ?></a>
+                                </li>
+                            <?php endfor; ?>
+                            <li>
+                                <?php $urlSuivant = "catalogue.php?page=" . ($pageActuelle + 1) . "&sort-by=" . $triPar . "&availability=" . $disponibiliteFiltre; ?>
+                                <a href="<?php if ($pageActuelle < $totalPages) echo $urlSuivant; else echo '#'; ?>" class="<?php if ($pageActuelle >= $totalPages) echo 'desactive'; ?>">Suivant &raquo;</a>
+                            </li>
+                        </ul>
                     </div>
                 <?php endif; ?>
             </div>

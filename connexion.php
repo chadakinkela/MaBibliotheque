@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 if (empty($nom) || empty($prenom)) {
                     $displayNewUserFields = true;
-                    $_SESSION['message'] = "Cet email n'existe pas. Veuillez compléter votre nom et prénom pour créer un compte.";
+                    $_SESSION['message'] = "Cet email n'est pas encore enregistré. Veuillez compléter votre nom et prénom pour créer un compte.";
                     $_SESSION['message_type'] = "info";
                 } else {
                     $queryInsertLecteur = "INSERT INTO lecteurs (nom, prenom, email) VALUES (?, ?, ?)";

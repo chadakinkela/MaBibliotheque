@@ -1194,7 +1194,7 @@ body.connexion-page main {
 }
 
 .filtresAside {
-    width: 250px; 
+    width:auto; 
     flex-shrink: 0;
     padding: 20px;
     background-color: #f8f9fa;

@@ -19,7 +19,7 @@ include('includes/header.php');
             <p>Sans trop m’attarder, je vais passer directement à la partie sur le fonctionnement du site. MaBibliothèque en ligne est composé de 9 fichiers principaux :</p>
             <ol>
                 <li><strong>index.php</strong> : Contient le contenu de la page d’accueil du site, présentant le site et ses fonctionnalités principales.</li>
-                <li><strong>results.php</strong> : Affiche les résultats de recherche de livres effectuée par l’utilisateur via la barre d'adresse.</li>
+                <li><strong>results.php</strong> : Affiche les résultats de recherche de livres effectuée par l’utilisateur via la barre de recherche.</li>
                 <li><strong>connexion.php</strong> : Permet aux utilisateurs de se connecter ou de créer un compte pour accéder aux fonctionnalités personnelles.</li>
                 <li><strong>userAccount.php</strong> : Permet à l’utilisateur de gérer son compte, consulter sa liste de livres, ajouter, modifier ou rendre un livre, et mettre à jour ses informations personnelles.</li>
                 <li><strong>details.php</strong> : vérifie si un utilisateur est connecté avant d'emprunter un livre, et vérifiele le statut du livre si ca n'a pas déjà été emprunté, sinon, il l'ajoute à la liste de lecture de l'utilisateur dans la base de données.</li>
