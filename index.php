@@ -9,7 +9,7 @@ include('includes/header.php');
 <main>
     <section class="sectionAcceuil">
         <div class="container">
-            <h1>Le Savoir à portée de Clic</h1>
+            <h1>Le Savoir à Portée de Clic</h1>
             <p>Votre bibliothèque numérique, explorez-le !</p>
 
             <!-- Barre de recherche -->
