@@ -48,6 +48,5 @@ $insert->execute();
 $insert->close();
 
 echo "Livre ajouté avec succès à votre liste de lecture.";
-echo "<p><a href='catalogue.php'>Retour au catalogue</a></p>";
 $connexion->close();
 ?>
