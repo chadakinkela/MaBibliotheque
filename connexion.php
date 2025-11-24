@@ -118,7 +118,7 @@ include('includes/header.php');
                 <form action="connexion.php" method="POST">
                     <div class="form-group">
                         <label for="email">Adresse Email :</label>
-                        <input type="email" id="email" name="email" placeholder="nom.email@exemple.com" value="<?php echo $emailValue; ?>" required>
+                        <input type="email" id="email" name="email" placeholder="patati@patata.com" value="<?php echo $emailValue; ?>" required>
                     </div>
 
                     <div id="newUserFields" style="display: none;">
