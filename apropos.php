@@ -10,7 +10,7 @@ include('includes/header.php');
 			<p>Bonjour,</p>
             <p>Je suis <strong>Chada</strong>, informaticienne, débrouillarde et consciencieuse.</p>
             <p>Je vis parce que j’apprends et c'est peu importe le domaine ou les circonstances de la vie, telle est ma philosophie, d’où mon côté débrouillardise. Et lorsqu’on apprend, on se doit un minimum de l’appliquer avec soin et rigueur, d’où mon côté consciencieuse et c'est dans cet état d'esprit qu'est née <strong>MaBibliothèque en ligne</strong>.</p>
-            <p>Ce site web est mon projet final pour la validation de ma formation en développement Web niveau intermédiaire, offert par l’Organisation Internationale de la Francophonie à travers son programme <a href="https://dclic.francophonie.org/" target="_blank">DeClic.</a></p>
+            <p>Ce site web est mon projet final pour la validation de ma formation en développement Web niveau intermédiaire, offert par l’Organisation Internationale de la Francophonie à travers son programme <a href="https://dclic.francophonie.org/" target="_blank">DCLiC.</a></p>
         </section>
 
         <!-- Fonctionnement du site -->
